@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deposit</title>
+</head>
+<body>
+    <h2>Deposit</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Deposit</button>
+    </form>
+    <a href="{% url 'account_details' account_id=account.id %}">Return home</a>
+</body>
+</html>

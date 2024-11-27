@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+</head>
+<body>
+    <h2>Details</h2>
+    <h2>Hi, {{ request.user.first_name }} {{ request.user.last_name }}</h2>
+    <h3>Your Balance is {{ account.balance }}</h3>
+    <a href="{% url 'deposit' account_id=account.id %}">Deposit</a>
+    <a href="{% url 'withdraw' account_id=account.id %}">Withdraw</a>
+    <a href="{% url 'transfer' account_id=account.id %}">Transfer</a>
+    <a href="{% url 'transactions' account_id=account.id %}">Transactions</a>
+    <a href="{% url 'login' %}?next={% url 'account_details' account_id=account.id %}">Login to view account details</a>
+    <button href="{% url 'logout' %}" onclick="loadPage()">Logout</button>
+
+    <script>
+        function loadPage() {
+            window.location.href = "{% url 'login' %}"; // Replace with your desired URL
+        }
+    </script>
+</body>
+</html>

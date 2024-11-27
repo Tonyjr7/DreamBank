@@ -1,0 +1,107 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - SecureBank</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+        .login-container {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+        }
+        .login-image {
+            background: url('static/app/hh.jpg') center/cover no-repeat;
+            min-height: 300px;
+        }
+        .login-form {
+            padding: 2rem;
+        }
+        .btn-primary {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .btn-primary:hover {
+            background-color: #004494;
+            border-color: #004494;
+        }
+        .logo {
+            max-width: 150px;
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-10 col-lg-8">
+                <div class="login-container">
+                    <div class="row g-0">
+                        <div class="col-md-6 login-image d-none d-md-block"></div>
+                        <div class="col-md-6 login-form">
+                            <div class="text-center mb-4">
+                                <img src="{% static "app/favicon.png" %}" width="50" height="50" alt="SecureBank Logo" class="logo">
+                                <h2>Welcome Back</h2>
+                                <p class="text-muted">Please login to your account</p>
+                            </div>
+                            <form method="post">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <label for="id_username" class="form-label">Username</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                        {{ form.username }}
+                                    </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="id_password" class="form-label">Password</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                                        {{ form.password }}
+                                    </div>
+                                </div>
+                                {% if form.errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        Please correct the error{{ form.errors|pluralize }} below.
+                                    </div>
+                                    {{ form.non_field_errors }}
+                                {% endif %}
+                                <div class="d-grid gap-2 mb-3">
+                                    <button type="submit" class="btn btn-primary">Login</button>
+                                </div>
+                                {% if next %}
+                                    <input type="hidden" name="next" value="{{ next }}">
+                                {% endif %}
+                                <div class="text-center">
+                                    <a href="{% url 'login' %}?next={% url 'account_details' account_id=account.id|default:0 %}" class="text-decoration-none">View account details</a>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <span>Don't have an account? </span>
+                                    <a href="{% url 'signup' %}" class="text-decoration-none">Sign up</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and Popper.js -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+</body>
+</html>

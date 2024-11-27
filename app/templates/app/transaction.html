@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transactions</title>
+</head>
+<body>
+    {% for transaction in transactions %}
+            <p>You requested for {{ transaction.transaction_type }} of amount: {{ transaction.amount }} at {{ transaction.timestamp }}</p>
+    {% endfor %}
+
+    <a href="{% url 'account_details' account_id=account.id %}">Return home</a>
+</body>
+</html>
