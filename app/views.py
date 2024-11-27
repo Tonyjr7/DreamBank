@@ -132,7 +132,7 @@ def transactions(request, account_id):
     account = get_object_or_404(Account, id=account_id, user=request.user)
 
     #retrive transaction history of the user
-    trasactions = Transactions.objects.filter(account_id=account.id)
+    trasactions = Transactions.objects.filter(account_id=account.id).order_by('-timestamp')
 
     return render(request, 'app/transaction.html', {'transactions':trasactions, 'account':account})
 

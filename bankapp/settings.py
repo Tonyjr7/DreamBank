@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-*aw6t6nv@qh^116=^jqp@f)=be%*nn^gxvgahp0e&p4h98(%d(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['dreambank.vercel.app', 'dreambank-triumphs-projects-b8d8a5fe.vercel.app', 'vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'dreambank.vercel.app', 'dreambank-triumphs-projects-b8d8a5fe.vercel.app', 'vercel.app']
 
 
 # Application definition
@@ -118,7 +118,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR/'staticfiles/'
+STATIC_ROOT = BASE_DIR/ 'staticfiles/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field

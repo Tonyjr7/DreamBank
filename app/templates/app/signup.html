@@ -3,30 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <title>Signup</title>
     <style>
         body {
             background-color: #f8f9fa;
+            font-family: 'Arial', sans-serif;
         }
         .signup-container {
             max-width: 400px;
             margin: 100px auto;
-            padding: 20px;
+            padding: 30px;
             background: white;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
         .signup-container h2 {
-            margin-bottom: 20px;
+            margin-bottom: 30px;
+            color: #007bff;
         }
         .btn-signup {
             width: 100%;
+            background-color: #28a745;
+            border: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+        .btn-signup:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
         }
         .text-center a {
             display: block;
-            margin-top: 10px;
+            margin-top: 20px;
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .text-center a:hover {
+            color: #0056b3;
         }
     </style>
 </head>
@@ -36,7 +51,7 @@
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
-            <button type="submit" class="btn btn-primary btn-signup">Sign up</button>
+            <button type="submit" class="btn btn-signup">Sign up</button>
         </form>
         <div class="text-center">
             <a href="{% url 'login' %}">Already have an account? Log in</a>
