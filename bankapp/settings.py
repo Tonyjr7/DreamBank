@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-*aw6t6nv@qh^116=^jqp@f)=be%*nn^gxvgahp0e&p4h98(%d(
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1', 'dreambank.vercel.app', 'dreambank-triumphs-projects-b8d8a5fe.vercel.app', 'vercel.app']
+ALLOWED_HOSTS = ['127.0.0.1', 'dreambank.onrender.com']
 
 
 # Application definition
