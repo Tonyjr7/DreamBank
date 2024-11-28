@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+import dj_database_url, os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -77,14 +78,9 @@ WSGI_APPLICATION = 'bankapp.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bankapp_db',  # Your database name
-        'USER': 'bankapp_user',  # Your PostgreSQL user
-        'PASSWORD': 'dream',  # The user's password
-        'HOST': 'localhost',
-        'PORT': '2000',  # Default PostgreSQL port
-    }
+    'default': dj_database_url.parse(
+        'postgresql://bankapp_user:C6vrnZ5UTquld2XpQKnC8u0ThmHe2hDU@dpg-ct46sci3esus73fdcdqg-a.oregon-postgres.render.com/bankapp_db_baku'
+    )
 }
 
 
