@@ -78,8 +78,12 @@ WSGI_APPLICATION = 'bankapp.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'bankapp_db',  # Your database name
+        'USER': 'bankapp_user',  # Your PostgreSQL user
+        'PASSWORD': 'dream',  # The user's password
+        'HOST': 'localhost',
+        'PORT': '2000',  # Default PostgreSQL port
     }
 }
 
