@@ -1,9 +1,23 @@
 {
-    "version": 2,
-    "builds": [
-      { "src": "bankapp/wsgi.py", "use": "@vercel/python" }
-    ],
-    "routes": [
-      { "src": "/(.*)", "dest": "bankapp/wsgi.py" }
-    ]
+  "version": 2,
+  "builds": [
+    {
+      "src": "bankapp/wsgi.py",
+      "use": "@vercel/python"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "bankapp/wsgi.py"
+    }
+  ],
+  "scripts": {
+    "build": "python manage.py collectstatic --noinput && python manage.py migrate"
+  },
+  "env": {
+    "DEBUG": "false",
+    "DJANGO_SETTINGS_MODULE": "bankapp.settings",
+    "DATABASE_URL": "your_postgres_database_url_here"
   }
+}
