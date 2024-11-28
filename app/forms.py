@@ -30,13 +30,27 @@ class CustomUserCreationForm(UserCreationForm):
         model = User  # Now we use the default User model
         fields = ['username', 'first_name', 'last_name', 'email', 'password1', 'password2']
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if not email:
+            raise forms.ValidationError("Email is required.")
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email is already in use.")
+        return email
+
+
     def save(self, commit=True):
         user = super().save(commit=False)
+        user.email = self.cleaned_data['email']  # Explicitly assign email
         if commit:
             user.save()
             # Create an Account object when the User is created
-            Account.objects.create(user=user, account_number=self.generate_account_number())
+            Account.objects.create(
+                user=user,
+                account_number=self.generate_account_number()
+            )
         return user
+
 
     def generate_account_number(self):
         # You can implement logic to generate a unique account number

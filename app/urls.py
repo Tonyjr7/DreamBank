@@ -5,6 +5,7 @@ from django.contrib.auth import views as auth_views
 urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('', auth_views.LoginView.as_view(), name='login'),
+     path('redirect-after-login/', views.redirect_after_login, name='redirect_after_login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('account/<int:account_id>/deposit', views.deposits, name='deposit'),
     path('account/<int:account_id>/withdraw', views.withdraw, name='withdraw'),

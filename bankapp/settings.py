@@ -126,5 +126,12 @@ STATIC_ROOT = BASE_DIR/ 'staticfiles/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/account/<account_id>/details/'
+LOGIN_REDIRECT_URL = '/redirect-after-login/'  # Temporary view
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+EMAIL_USE_SSL = True
+EMAIL_HOST_USER = 'dream.wave.devs@gmail.com'
+EMAIL_HOST_PASSWORD = 'gfaz pdqq npvz hgwh'
 

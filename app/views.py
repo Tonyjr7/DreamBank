@@ -3,12 +3,32 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Transactions, Account
 from .forms import DepositForm, WithdrawalForm, TransferForm, CustomUserCreationForm
+from django.core.mail import send_mail
+from django.conf import settings
+
+@login_required
+def redirect_after_login(request):
+    try:
+        account = Account.objects.get(user=request.user)
+        return redirect('account_details', account_id=account.id)
+    except Account.DoesNotExist:
+        # Optional: Redirect to an error page or create a default account
+        return redirect('/error/')
 
 def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
+            user = form.save()
+
+            #sending mail to new user
+            send_mail(
+                subject='Welcome To DreamBank Banking Simulator!',
+                message=f'Hello {user.username}, thank you for registering, we appreciate you for trying us out.',
+                from_email=settings.EMAIL_HOST_USER,
+                recipient_list=[user.email],
+                fail_silently=False,
+            )
 
             return redirect('login')
     else:
@@ -36,7 +56,6 @@ def account_details(request, account_id):
 def deposits(request, account_id):
     print(f"Logged-in user: {request.user.username}")
     account = get_object_or_404(Account, id=account_id, user=request.user)
-    print(f"Accessed account: {account}")
     if request.method == 'POST':
         form = DepositForm(request.POST)
         if form.is_valid():
