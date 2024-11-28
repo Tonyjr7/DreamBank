@@ -15,9 +15,4 @@
   "scripts": {
     "build": "python manage.py collectstatic --noinput && python manage.py migrate"
   },
-  "env": {
-    "DEBUG": "false",
-    "DJANGO_SETTINGS_MODULE": "bankapp.settings",
-    "DATABASE_URL": "your_postgres_database_url_here"
-  }
 }
