@@ -41,7 +41,9 @@
                     <div class="card-body">
                         <h5 class="card-title text-muted mb-0">Welcome back,</h5>
                         <h2 class="card-text mb-4">{{ request.user.first_name }} {{ request.user.last_name }}</h2>
-                        <h5 class="card-title text-muted mb-2">Your Balance</h5>
+                        <h5 class="card-title text-muted mb-2">Your Balance</h5><a href="{% url 'account_details' account_id=account.id %}" class="btn btn-primary">
+                            <i class="bi bi-arrow-clockwise"></i> Refresh
+                        </a>
                         <h1 class="display-3 fw-bold text-primary">${{ account.balance }}</h1>
                     </div>
                 </div>
@@ -78,9 +80,6 @@
             </div>
         </div>
         <div class="mt-4 text-center">
-            <a href="{% url 'login' %}?next={% url 'account_details' account_id=account.id %}" class="btn btn-link text-decoration-none me-3">
-                <i class="bi bi-box-arrow-in-right me-1"></i> Login to view full account details
-            </a>
             <button onclick="logout()" class="btn btn-danger">
                 <i class="bi bi-box-arrow-right me-1"></i> Logout
             </button>
