@@ -79,9 +79,13 @@ WSGI_APPLICATION = 'bankapp.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        'postgresql://bankapp_user:C6vrnZ5UTquld2XpQKnC8u0ThmHe2hDU@dpg-ct46sci3esus73fdcdqg-a.oregon-postgres.render.com/bankapp_db_baku'
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+    # dj_database_url.parse(
+    #     'postgresql://bankapp_user:C6vrnZ5UTquld2XpQKnC8u0ThmHe2hDU@dpg-ct46sci3esus73fdcdqg-a.oregon-postgres.render.com/bankapp_db_baku'
+    # )
 }
 
 
